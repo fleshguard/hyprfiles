@@ -2,7 +2,7 @@
 
 My dotfiles for Hyprland
 
-![GitHub repo size](https://img.shields.io/github/repo-size/fleshguard/hyprfiles)
+![GitHub repo size](https://img.shields.io/github/repo-size/fleshguard/hyprfiles?style=for-the-badge&label=Size&labelColor=393e64&color=7579a8)
 ## System Information:
 * OS: [Artix GNU/Linux](https://artixlinux.org/)
 * Terminal Emulator: [foot](https://wiki.archlinux.org/title/Foot)
@@ -10,6 +10,6 @@ My dotfiles for Hyprland
 * Launcher: [wofi](https://man.archlinux.org/man/wofi.1)
 * Notification Manager: [dunst](https://man.archlinux.org/man/dunst.1)
 ## How it will look:
-![img](template)
+![img](/Github/Hyprfiles.png)
 ## Dependencies for Artix:
 '$ pacman -Sy Hyprland foot wofi dunst wlogout power-profiles-daemon waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji'
