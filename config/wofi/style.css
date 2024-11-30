@@ -1,0 +1,36 @@
+window {
+	font-size: 17px;
+	font-family: "SourceCodePro", "Symbols";
+	background-color: rgba(22, 23, 27, 0.85);
+	border-radius: 10;
+	color: #ffffff;
+	border: 2px solid;
+	border-color: #343434;
+}
+
+#entry:selected {
+	background-color: rgba(42, 39, 58, 0.68);
+	border: 1.5px solid;
+	border-color: #323757;
+	border-radius: 10;
+	padding: 0.60em;
+	margin-left: 3;
+	margin-right: 3;
+}
+
+#entry:unselected {
+	color: #ffffff;
+	padding: 0.15em;
+	border-radius: 5
+}
+
+#input {
+	background-color: rgba(42, 39, 58, 0.8);
+	margin-left: 5;
+	margin-right: 5;
+	margin-top: 5;
+	margin-bottom: 5;
+	color: #ffffff;
+	padding: 0.17em;
+	border-radius: 5
+}
