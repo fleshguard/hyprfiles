@@ -11,5 +11,6 @@ My dotfiles for Hyprland, with sway/i3 keybinds
 * Notification Manager: [dunst](https://man.archlinux.org/man/dunst.1)
 ## How it will look:
 ![img](/Github/miku_clean_2.png)
+[See Hyprlock](/Github/hyprlock_personal.png)
 ## Dependencies for Artix:
 '$ pacman -Sy Hyprland foot wofi dunst wlogout power-profiles-daemon waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji'
