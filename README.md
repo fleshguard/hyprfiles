@@ -11,6 +11,7 @@ My dotfiles for Hyprland, with sway/i3 keybinds and left-hand centered submaps
 * Notification Manager: [dunst](https://man.archlinux.org/man/dunst.1)
 ## How it will look:
 ![img](/Github/miku_clean_2.png)
+
 [See Hyprlock](/Github/hyprlock_personal.png)
 
 [See wofi](/Github/miku_wofi.png)
