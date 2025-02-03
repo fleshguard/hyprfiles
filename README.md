@@ -16,4 +16,4 @@ My dotfiles for Hyprland, with sway/i3 keybinds and left-hand centered submaps
 
 [See wofi](/Github/miku_wofi.png)
 ## Dependencies for Artix:
-'$ pacman -Sy Hyprland foot wofi dunst wlogout power-profiles-daemon waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji'
+'$ pacman -Sy Hyprland hyprlock swww foot wofi dunst wlogout power-profiles-daemon waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji'
