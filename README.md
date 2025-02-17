@@ -8,7 +8,7 @@ My dotfiles for Hyprland, with sway/i3 keybinds and left-hand centered submaps
 * Terminal Emulator: [foot](https://wiki.archlinux.org/title/Foot)
 * Window Manager: [Hyprland](https://hyprland.org/) w/ [waybar](https://man.archlinux.org/man/waybar.5.en)
 * Launcher: [wofi](https://man.archlinux.org/man/wofi.1)
-* Notification Manager: [dunst](https://man.archlinux.org/man/dunst.1)
+* Notification Manager: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
 ## How it will look:
 ![img](/Github/1919-1080.png)
 
@@ -18,4 +18,4 @@ My dotfiles for Hyprland, with sway/i3 keybinds and left-hand centered submaps
 
 [See wofi](/Github/miku_wofi.png)
 ## Dependencies for Artix:
-'$ pacman -Sy Hyprland hyprlock hypridle swww foot wofi dunst wlogout power-profiles-daemon waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji'
+'$ pacman -Sy Hyprland hyprlock hypridle swww swaync foot wofi dunst wlogout power-profiles-daemon waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji'
