@@ -9,6 +9,7 @@ My dotfiles for Hyprland, with sway/i3 keybinds and left-hand centered submaps
 * Window Manager: [Hyprland](https://hyprland.org/) w/ [waybar](https://man.archlinux.org/man/waybar.5.en)
 * Launcher: [wofi](https://man.archlinux.org/man/wofi.1)
 * Notification Manager: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
+* Clipboard Manager: [Clipse](https://github.com/savedra1/clipse)
 ## How it will look:
 ![img](Github/20250228_07h11m10s_grim.png)
 
