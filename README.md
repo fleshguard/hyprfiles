@@ -10,12 +10,12 @@ My dotfiles for Hyprland, with sway/i3 keybinds and left-hand centered submaps
 * Launcher: [wofi](https://man.archlinux.org/man/wofi.1)
 * Notification Manager: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
 ## How it will look:
-![img](/Github/1919-1080.png)
+![img](Github/20250228_07h11m10s_grim.png)
 
-[See Hyprlock](/Github/hyprlock_personal.png)
+[See Hyprlock](Github/20250302_10h53m49s_grim.png)
 
-[See colorscheme](/Github/miku_clean_1.png)
+[See colorscheme](Github/20250228_07h11m46s_grim.png)
 
-[See wofi](/Github/miku_wofi.png)
+[See wofi](Github/20250228_07h11m24s_grim.png)
 ## Dependencies for Artix:
 '$ pacman -Sy Hyprland hyprlock hypridle swww swaync foot wofi dunst wlogout power-profiles-daemon waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji'
