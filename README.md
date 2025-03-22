@@ -15,8 +15,6 @@ My dotfiles for Hyprland, with sway/i3 keybinds and left-hand centered submaps
 
 [See Hyprlock](Github/20250302_10h53m52s_grim.png)
 
-[See colorscheme](Github/20250228_07h11m46s_grim.png)
-
 [See wofi](Github/20250322_14h10m54s_grim.png)
 
 [See swaync](Github/20250322_14h07m44s_grim.png)
