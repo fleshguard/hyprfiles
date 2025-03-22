@@ -1,0 +1,61 @@
+* {
+	font-family: "SourceCodePro";
+	font-size: 16;
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	background-color: rgba(22, 23, 27, 0.77);
+	border-radius: 10;
+}
+
+button {
+    border-radius: 10;
+    border-color: #7a94ac;
+	text-decoration-color: #FFFFFF;
+    color: #FFFFFF;
+	background-color: rgba(22, 23, 27, 0.70);
+	border-style: solid;
+	border-width: 2.5px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 25%;
+	margin-top: 5;
+	margin-bottom: 5;
+	margin-right: 5;
+	margin-left: 5;
+}
+
+button:focus, button:active, button:hover {
+	background-color: rgba(61, 70, 104, 0.65);
+	outline-style: none;
+	margin-top: 8;
+	margin-bottom: 8;
+	margin-left: 8;
+	margin-right: 8;
+}
+
+#lock {
+    background-image: image(url("/usr/share/wlogout/icons/lock_blue.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/usr/share/wlogout/icons/logout_blue.png"), url("/usr/local/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/usr/share/wlogout/icons/suspend_blue.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("/usr/share/wlogout/icons/hibernate_blue.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("/usr/share/wlogout/icons/shutdown_blue.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/usr/share/wlogout/icons/reboot_blue.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+}
