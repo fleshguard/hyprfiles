@@ -19,4 +19,4 @@ My dotfiles for Hyprland, with sway/i3 keybinds and left-hand centered submaps
 
 [See swaync](Github/20250409_22h01m58s_grim.png)
 ## Dependencies for Artix:
-'$ pacman -Sy Hyprland hyprlock hypridle swww swaync foot wofi dunst wlogout power-profiles-daemon waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji'
+'$ pacman -Sy Hyprland hyprlock hypridle swaybg swaync foot wofi dunst wlogout waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji'
