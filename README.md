@@ -11,12 +11,12 @@ My dotfiles for Hyprland, with sway/i3 keybinds and left-hand centered submaps
 * Notification Manager: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
 * Clipboard Manager: [Clipse](https://github.com/savedra1/clipse)
 ## How it will look:
-![img](Github/20250228_07h11m10s_grim.png)
+![img](Github/20250409_20h22m47s_grim.png)
 
 [See Hyprlock](Github/20250302_10h53m52s_grim.png)
 
-[See wofi](Github/20250322_14h10m54s_grim.png)
+[See wofi](Github/20250409_22h02m18s_grim.png)
 
-[See swaync](Github/20250322_14h07m44s_grim.png)
+[See swaync](Github/20250409_22h01m58s_grim.png)
 ## Dependencies for Artix:
 '$ pacman -Sy Hyprland hyprlock hypridle swww swaync foot wofi dunst wlogout power-profiles-daemon waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji'
