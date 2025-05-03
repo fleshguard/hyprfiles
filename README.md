@@ -1,6 +1,6 @@
 ## Hyprfiles
 
-My dotfiles for Hyprland, with sway/i3 keybinds and left-hand centered submaps
+My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/fleshguard/hyprfiles?style=for-the-badge&label=Size&labelColor=393e64&color=7579a8)
 ## System Information:
