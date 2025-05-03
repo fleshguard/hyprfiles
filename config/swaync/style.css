@@ -1,5 +1,6 @@
-@define-color cc-bg rgba(16, 16, 16, 0.76);
-@define-color noti-border-color rgba(122, 148, 172, 0.95);
+@define-color cc-bg rgba(22, 23, 27, 0.70);
+@define-color cc-border rgba(218, 218, 218, 0.13);
+@define-color noti-border-color rgba(55, 55, 55, 1);
 @define-color noti-bg rgba(16, 16, 16, 0.76);
 @define-color noti-bg-opaque rgb(48, 48, 48);
 @define-color noti-bg-darker rgb(38, 38, 38);
@@ -50,7 +51,7 @@
 .notification-row .notification-background .notification {
   /* The actual notification */
   border-radius: 12px;
-  border: 2.5px solid @noti-border-color;
+  border: 2.5px solid #282828;
   padding: 0;
   transition: background 0.15s ease-in-out;
   background: @noti-bg;
@@ -262,9 +263,10 @@
 
 .control-center {
   /* The Control Center which contains the old notifications + widgets */
+  border: 1.5px solid @cc-border;
   background: @cc-bg;
   color: @text-color;
-  border-radius: 0px;
+  border-radius: 12px;
 }
 
 .control-center .control-center-list-placeholder {
@@ -317,37 +319,37 @@
   color: @text-color;
   text-shadow: none;
   background: @noti-bg;
-  border: 2px solid @noti-border-color;
+  border: 2px solid #282828;
   box-shadow: none;
   border-radius: 12px;
 }
 
 .widget-title > button:hover {
+  border: 2px solid @noti-bg-hover;
   background: @noti-bg-hover;
 }
 
 /* DND widget */
 .widget-dnd {
   color: @text-color;
-  margin: 8px;
+  margin: 12px;
   font-size: 1.1rem;
 }
 
 .widget-dnd > switch {
   font-size: initial;
   border-radius: 12px;
-  background: @noti-bg;
-  border: 2px solid @noti-border-color;
+  border: 2px solid #282828;
   box-shadow: none;
 }
 
 .widget-dnd > switch:checked {
   background: @noti-bg-hover;
+  border: 2px solid #7a94ac
 }
 
 .widget-dnd > switch slider {
-  background: @noti-bg-hover;
-  border: 2px solid @noti-border-color;
+  border: 2px solid #7a94ac;
   border-radius: 12px;
 }
 
@@ -401,7 +403,7 @@
 }
 
 .widget-mpris .widget-mpris-player > box > button:hover {
-  border: 1.5px solid @noti-border-color;
+  border: 1.8px solid #7a94ac;
   background-color: @noti-bg-hover;
 }
 
@@ -415,18 +417,26 @@
 
 /* Buttons widget */
 .widget-buttons-grid {
-  padding: 8px;
-  margin: 8px;
-  border-radius: 12px;
-  background-color: @noti-bg;
+  margin: 6px;
+  background-color: @transparent
 }
 
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover,
 .widget-buttons-grid > flowbox > flowboxchild > button {
+  font-size: 19px;
+  min-height: 25px;
+  min-width: 30px;
   background: @noti-bg;
+  border: 0px solid @noti-bg;
   border-radius: 12px;
+  color: #dadada
 }
 
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover,
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+  border: 0px solid @noti-bg-hover;
+  background-color: @noti-bg-hover
   /* style given to the active toggle button */
 }
 
@@ -459,9 +469,11 @@
 
 /* Volume widget */
 .widget-volume {
+  font-size: 24;
   background-color: @noti-bg;
-  padding: 8px;
-  margin: 8px;
+  padding: 0px;
+  margin: 7px;
+  border: 1.5px solid @noti-border-color;
   border-radius: 12px;
 }
 
