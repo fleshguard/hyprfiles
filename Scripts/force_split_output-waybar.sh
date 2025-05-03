@@ -15,7 +15,6 @@ function windows_in_active_workspace {
 
 
 function call_split_out {
-
   if [[ "$force_split_out" == 0 ]]; then
     icon=' 󰍽 '
   elif [[ "$force_split_out" == 1 ]]; then
