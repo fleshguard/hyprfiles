@@ -15,8 +15,5 @@ My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 
 [See Hyprlock](Github/20250302_10h53m52s_grim.png)
 
-[See wofi](Github/3.png)
-
-[See swaync](Github/2.png)
 ## Dependencies for Artix:
-'$ pacman -Sy Hyprland hyprlock hypridle swaybg swaync foot wofi dunst wlogout waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji'
+'$ pacman -Sy Hyprland hyprlock hypridle swaybg swaync foot wofi dunst wlogout waybar ttf-fantasque-sans-mono ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji pywal'
