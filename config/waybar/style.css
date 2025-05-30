@@ -1,0 +1,267 @@
+@import url("/home/spacerat/.cache/wal/colors-waybar.css");
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FiraCodeRetina, NotoFontsEmoji, FontAwesome, Symbol;
+    font-size: 13.0px;
+    min-height: 0px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+window#waybar {
+    background: alpha(@background, 0.70) 70%;
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.empty #window {
+  background-color: transparent
+}
+
+#custom-applications {
+  margin-right: 2px;
+  margin-top: -1px
+}
+
+#custom-splitint,
+#custom-swaync {
+  text-shadow: 0px 0px 2px alpha(@color6, .3);
+}
+
+#custom-splitint {
+}
+
+#custom-bluetooth-status {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+#custom-expander {
+  margin-right: 4px;
+  text-shadow: 0px 0px 2px alpha(@foreground, .5)
+}
+
+#custom-seperator_2,
+#custom-seperator {
+    color: alpha(@foreground, 0.30);
+}
+
+#custom-expander,
+#power-profiles-daemon.performance,
+#power-profiles-daemon.balanced,
+#power-profiles-daemon.power-saver,
+#custom-wifi-status,
+#custom-power,
+#custom-pacman-updates {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+#custom-splitint:hover,
+#custom-swaync:hover,
+#power-profiles-daemon.performance:hover,
+#power-profiles-daemon.balanced:hover,
+#power-profiles-daemon.power-saver:hover,
+#custom-expander:hover,
+#power-profiles-daemon:hover,
+#custom-wifi-status:hover,
+#custom-power:hover,
+#custom-pacman-updates:hover,
+#custom-bluetooth-status:hover {
+  color: @color1;
+}
+
+#custom-pacman-updates {
+  margin-left: -0px;
+}
+
+button {
+    box-shadow: inset 0 -3px transparent;
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: #a37800;
+}
+
+#workspaces {
+    /*background: alpha(@background, 0.55) 55%;*/
+    margin-top: 1px;
+    margin-bottom: 2px;
+    border-radius: 6px;
+}
+
+#workspaces button {
+    text-shadow: 0px 0px 2px alpha(@color6, .2);
+    padding: 0 5px;
+    color: @color15;
+}
+
+#workspaces button:hover,
+#workspaces button.active {
+  background-color: @color6;
+  color: @background;
+  border-radius: 5px;
+  box-shadow: inset 0 0px @transparent; /* Fixes glitch when hover */
+  box-shadow: 0px 0px 5px alpha(@background, .5);
+  text-shadow: 0px 0px 5px alpha(@background, .5);
+  margin-top: 1px;
+  margin-bottom: 1px
+}
+
+#workspaces button.urgent {
+    color: @color2;
+}
+
+#taskbar {
+margin-left: 4px;
+}
+
+#taskbar button {
+
+  text-shadow: 0px 0px 2px alpha(@color6, .2);
+	border-top: 1.5px solid alpha(@color6, 0.55);
+	margin-left: 1px;
+	margin-right: 1px;
+  padding-left: 12px;
+  padding-right: 8px;
+  color: @foreground;
+	transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#taskbar button.active {
+	border-top: 1.5px solid @color3;
+  background: alpha(@background, 0.45) 45%;
+}
+
+#taskbar button:hover {
+  border-top: 1.5px solid @color3;
+  box-shadow: inset 0 0px @transparent; /* Fixes glitch when hover */
+}
+
+#clock {
+  margin-left: 2px
+}
+
+#temperature,
+#cpu,
+#memory,
+#custom-splitint,
+#custom-applications,
+#window,
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#pulseaudio,
+#tray,
+#submap {
+    color: @foreground;
+    padding: 0 10px;
+    text-shadow: 0px 0px 2px alpha(@color6, .2);
+    /*background: alpha(@background, 0.55) 55%;
+    border-radius: 6px;*/
+}
+
+#window:hover,
+#custom-applications:hover,
+#network:hover,
+#clock:hover,
+#cpu:hover,
+#memory:hover, 
+#pulseaudio:hover,
+#battery:hover,
+#temperature:hover {
+  border-radius: 6px;
+	background-color: @foreground;
+	color: @background 
+
+}
+
+#submap {
+  margin-bottom: 2px; 
+  background: alpha(@background, 0.45) 45%;
+  color: @color12;
+  border-radius: 5px;
+  box-shadow: 3 3 3 3px alpha(@background, 0.15)
+}
+
+@keyframes battery_blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery {
+  margin-top: 1px;
+  margin-right: -3px
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+ animation-name: battery_blink;
+ animation-duration: 1s;
+ animation-timing-function: linear;
+ animation-iteration-count: infinite;
+ animation-direction: alternate;
+ color: @color2
+}
+
+#battery.charging {
+    animation-name: battery_blink;
+    color: @color6
+}
+
+#power-profiles-daemon {
+  margin-left: 8px;
+  margin-right: -7px
+}
+
+#power-profiles-daemon.performance {
+    background-color: transparent;
+    color: @foreground;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: transparent;
+    color: @transparent;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: transparent;
+    color: @transparent;
+}
+
+#network.disconnected {
+  color: @color1
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+    color: @color1;
+}
+
+#tray {
+  padding: 0px 6px; 
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @color1;
+}
