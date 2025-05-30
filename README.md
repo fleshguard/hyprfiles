@@ -11,9 +11,9 @@ My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 * Notification Manager: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
 * Clipboard Manager: [Clipse](https://github.com/savedra1/clipse)
 ## How it will look:
-![img](Github/grim-2025-05-30_0811.png)
-
 [See Hyprlock](Github/grim-2025-05-30_0828.png)
+
+![img](Github/grim-2025-05-30_0811.png)
 
 ## Dependencies for Arch-based distros:
 '$ pacman -Sy Hyprland hyprlock hypridle swaybg foot wofi swaync wlogout waybar ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji pywal'
