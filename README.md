@@ -11,7 +11,7 @@ My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 * Notification Manager: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
 * Clipboard Manager: [Clipse](https://github.com/savedra1/clipse)
 ## How it will look:
-![img](Github/grim-2025-05-30_0359.png)
+![img](Github/grim-2025-05-30_0811.png)
 
 [See Hyprlock](Github/20250302_10h53m52s_grim.png)
 
