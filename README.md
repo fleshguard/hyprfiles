@@ -13,7 +13,7 @@ My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 ## How it will look:
 ![img](Github/grim-2025-05-30_0811.png)
 
-[See Hyprlock](Github/20250302_10h53m52s_grim.png)
+[See Hyprlock](Github/grim-2025-05-30_0828.png)
 
 ## Dependencies for Arch-based distros:
 '$ pacman -Sy Hyprland hyprlock hypridle swaybg foot wofi swaync wlogout waybar ttf-fira-code ttf-nerd-fonts-symbols noto-fonts-emoji pywal'
