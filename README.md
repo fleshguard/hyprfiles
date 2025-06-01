@@ -13,8 +13,10 @@ Initial Reddit posts: ![r/unixporn](https://www.reddit.com/r/unixporn/comments/1
 * Notification Manager: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
 * Clipboard Manager: [Clipse](https://github.com/savedra1/clipse)
 * Cursor: [Bibata Modern Classic](https://github.com/ful1e5/Bibata_Cursor/releases)
+
+* Wallpaper tool and color generation: [swaybg](https://github.com/swaywm/swaybg), [pywal16](https://github.com/eylles/pywal16) w/ [wrapper script](https://github.com/fleshguard/hyprfiles/blob/main/Scripts/swaybg_pywal.sh)
 ## How it will look:
-[See Hyprlock](Github/grim-2025-05-30_0828.png)
+[See Hyprlock in gallery](Github/grim-2025-05-30_0828.png)
 
 ![img](Github/grim-2025-05-30_0811.png)
 
