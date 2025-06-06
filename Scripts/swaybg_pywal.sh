@@ -2,7 +2,7 @@ wallpaper_path="$1"
 
 if [[ -f "$wallpaper_path" ]]; then
   pkill -x swaybg
-  swaybg -o '*' -m fill -i $wallpaper_path & disown
+  swaybg -o '*' -m fill -i "$wallpaper_path" & disown
 
   wal -c 
   wal -n -t -i $wallpaper_path
