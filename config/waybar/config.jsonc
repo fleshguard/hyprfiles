@@ -1,0 +1,224 @@
+// -*- mode: jsonc -*-
+{
+    //"output": "HDMI-A-1",
+    //"layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "reload_style_on_change": true,
+    "height": 25, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": -2, // Gaps between modules (4px)
+    "modules-left": [
+  "custom/applications",
+  "hyprland/workspaces",
+  "custom/seperator",
+	//"wlr/taskbar",
+  "custom/splitint",
+  "hyprland/window"
+    ],
+    "modules-center": [
+      "hyprland/submap"
+    ],
+    "modules-right": [
+	"network",
+  "custom/bluetooth-status",
+	"pulseaudio",
+  "battery",
+  "custom/seperator",
+  "clock",
+  "custom/swaync",
+  "group/expand"
+    ],
+       "hyprland/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "warp-on-scroll": false,
+         "format": "{name}",
+           "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "",
+             "5": "",
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>",
+	"tooltip": false
+    },
+
+
+"custom/seperator": {
+    "format": "<span font='GohuFont 14 Nerd Font Mono 10'> |</span>",
+    "tooltip": false
+},
+
+"custom/seperator_2": {
+    "format": "<span font='GohuFont 14 Nerd Font Mono 11.5'> </span>",
+    "tooltip": false
+},
+
+
+"wlr/taskbar": {
+  "all-outputs": false,
+  "icon-size": 16.5,
+	"tooltip": true,
+	"format": "{icon} {title}",
+	"tooltip-format": "{name}\nAPPID: {app_id}\nWindow State: {state} [{short_state}] \n\n{name}",
+  "on-click-middle": "close",
+  "on-click": "minimize-raise",
+  "sort-by-app-id": false,
+  "markup": true
+},
+
+
+"hyprland/window": {
+  "separate-outputs": true,
+	"format": "<span font ='Fira Code SemiBold'>{title}</span>",
+	"icon": true,
+	"icon-size": 19,
+	"tooltip-format": "{title}\n\n{class}, {initialClass}",
+	"expand": false,
+  "tooltip": true
+    },
+
+    "custom/expander": {
+      "format": "<span font='Font Awesome 6 Free 9'> </span>",
+      "tooltip": false
+    },
+
+    "group/expand": {
+      "orientation": "horizontal",
+      "drawer": {
+          "transition-duration": 600,
+          "transition-to-left": true,
+          "click-to-reveal": true
+    },
+    "modules": ["custom/expander", /* "custom/power", "power-profiles-daemon", "custom/pacman-updates", */ "tray"]
+
+
+        },
+    "tray": {
+        "icon-size": 18.0,
+        "spacing": 10
+    },
+
+    "clock": {
+        /*"timezone": "America/x",*/
+        "interval": 1,
+	      "tooltip-format": "<big>{:%Y %B, %d | %A\n%r}</big>\n\n<tt><big>{calendar}</big></tt>",
+        "format": "<span font='Fira Code SemiBold 9.5'>{:%a %b %d  %I:%M %p}</span>"
+    },
+
+    "custom/applications": {
+      "format": "<span font='Font Awesome 6 Free 16'></span>",
+	    "tooltip": false,
+	    "on-click": "pkill -x wofi || wofi -I -H 500 -W 500 --show drun",
+      "on-click-right": "hyprctl dispatch overview:toggle"
+    },
+    
+    "cpu": {
+        "format": "  {usage}% ",
+        "format": "<span font='Font Awesome 6 Free 10'>   </span>{usage}%",
+      	"interval": 3,
+        "tooltip-format": "{usage{n}}"
+    },
+
+    "memory": {
+        "format": "  {used}GiB ",
+        "format": "<span font='Font Awesome 6 Free 10'>   </span>{used}GiB",
+	      "interval": 3,
+	      "tooltip-format": "Avail: {used}GiB of {avail}GiB\nSWAP: {swapUsed}GiB of {swapTotal}GiB\nTotal Used: {total}GiB"
+    },
+
+    "temperature": {
+        "tooltip-format": "Temperature from thermal zone\n	     {temperatureC}°C",
+	      // "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+
+    "battery": {
+        "states": {
+            "good": 75,
+            "warning": 35,
+            "critical": 15
+        },
+	      "interval": 2,
+        "format": "<span font='Font Awesome 6 Free 10'>{icon}  </span>{capacity}%",
+        "format-full": "<span font='Font Awesome 6 Free 10'>{icon}  </span>{capacity}%",
+        "format-charging": "<span font='Font Awesome 6 Free 10'> </span>+ {capacity}%",
+        "format-plugged": "<span font='Font Awesome 6 Free 10'>  </span>- {capacity}%",
+        "format-tooltip": "{capacity}%\n{time}",
+        "format-icons": [" ", " ", " ", " ", " "]
+   },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "<span font='Font Awesome 6 Free 14'>{icon}  </span>}",
+        "format-ethernet": "<span font='Font Awesome 6 Free 15.0' rise='-2000' >{icon}</span>",
+        "tooltip-format": "{ipaddr} on {ifname}\nessid: {essid}, ({signalStrength}%)\n{bandwidthUpBits}    {bandwidthDownBits}",
+        "format-linked": "<span font='Font Awesome 6 Free 14'>{icon}  </span>?",
+        "format-disconnected": "<span font='Font Awesome 6 Free 14'>{icon}  </span>",
+	      "on-click": "pkill -x impala || foot -e --title=impala impala",
+        "format-icons": {
+          "wifi": "",
+          "ethernet": "󰈀",
+          "disconnected": ""
+        }
+    },
+
+    "pulseaudio": {
+        "format": "<span font='Font Awesome 6 Free 9.0'>{icon}   </span>{volume}%",
+        "format-bluetooth": "<span font='Font Awesome 6 Free 9.0'>{icon}    </span>{volume}%",
+        "format-muted": "<span font='Font Awesome 6 Free 9.0'>    </span>{volume}%",
+        "format-bluetooth-muted": "    {icon} {format_source}",
+        "format-source": "{volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "default": ["", "", " "]
+        },
+        "on-click": "pkill -x pavucontrol || pavucontrol",
+        "on-click-right": "pamixer -t"
+  
+    },
+
+    "custom/splitint": {
+      "format": "<span font='Font Awesome 6 Free 9'>{}</span>",
+      "exec": "~/.config/hypr/Scripts/Waybar/force_split_output-waybar.sh",
+      "interval": 1,
+      "on-click": "~/.config/hypr/Scripts/Waybar/force_split_toggle.sh",
+      "tooltip": false
+    },
+
+    "custom/bluetooth-status": {
+      "format": "<span font='Font Awesome 6 Free 14.5'>{}</span>",
+      "exec": "~/.config/hypr/Scripts/Waybar/bluetooth_status.sh",
+      "tooltip": false,
+      "interval": 2
+    },
+
+    "custom/swaync": {
+      "format": "<span font='FiraCodeRetina 14.0'> {} </span>",
+      "exec": "~/.config/hypr/Scripts/Waybar/swaync-icon.sh",
+      "on-click": "swaync-client -t",
+      "tooltip": false,
+      "interval": 2
+    }
+    }
+}
