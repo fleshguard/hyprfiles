@@ -18,7 +18,7 @@ if [[ -f "$wallpaper_path" ]]; then
 
   cat ~/.cache/wal/sequences
   
-  ln -s "$wallpaper_path" ~/Pictures/Wallpapers/PyWal/pypv  # For manual wallpaper setting 
+  ln -ifvs "$wallpaper_path" ~/Pictures/Wallpapers/PyWal/pypv  # For manual wallpaper setting 
 else
   echo -e "\e[1mInvalid path, or none given.\e[0m"
   exit 1
