@@ -7,7 +7,7 @@
 My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 
 ##
-[See Hyprlock in gallery](Github/grim-2025-05-30_0828.png)
+[See Hyprlock in gallery](Github/06-14-25-0718PM_511997221.png)
 
 ![img](Github/grim-2025-05-30_0811.png)
 
