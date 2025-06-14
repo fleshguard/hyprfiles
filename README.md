@@ -21,7 +21,7 @@ My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 * Notification Manager: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
 * Clipboard Manager: [Clipse](https://github.com/savedra1/clipse)
 * Cursor: [Bibata Modern Classic](https://github.com/ful1e5/Bibata_Cursor/releases)
-* Wallpaper tool and color generation: [swaybg](https://github.com/swaywm/swaybg), [pywal16](https://github.com/eylles/pywal16) w/ [wrapper script](https://github.com/fleshguard/hyprfiles/blob/main/Scripts/pybg.sh), [2](https://github.com/fleshguard/hyprfiles/blob/main/Scripts/pypv.sh)
+* Wallpaper tool and color generation: [swaybg](https://github.com/swaywm/swaybg) or [mpvpaper](https://github.com/GhostNaN/mpvpaper), [pywal16](https://github.com/eylles/pywal16) w/ [wrapper scripts](https://github.com/fleshguard/hyprfiles/blob/main/Scripts/)
 
 ## 
 
