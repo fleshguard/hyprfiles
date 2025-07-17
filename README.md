@@ -26,7 +26,7 @@ My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 ## 
 
 > [!NOTE] 
-> These are my personal dots—theyre not wrote for systemd, so you might have to edit some configs or scripts
+> These are my personal dots—theyre not perfect, so you might have to edit some configs or scripts
 >
 > But everything else you need should be below or in 'System Information'
 
@@ -34,5 +34,5 @@ My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 Fira Code Retina, Segoe UI Variable, FantasqueSansMono, Cascadia Mono NF, Noto Fonts Emoji, Noto Fonts Symbols, Font Awesome 6, JetBrainsMono Nerd Font  
 
 ## Dependencies for Arch-based distros:
-'$ pacman -Sy Hyprland hyprlock hypridle swaybg foot wofi swaync wlogout waybar pywal'
+'$ pacman -Sy Hyprland hyprlock hypridle swaybg foot wofi swaync wlogout waybar pywal swayosd'
 
