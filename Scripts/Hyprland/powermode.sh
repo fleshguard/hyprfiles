@@ -1,5 +1,5 @@
 user_args="$1"
-state_file="/home/spacerat/.config/hypr/Scripts/Hyprland/state_file"
+state_file="~/.config/hypr/Scripts/Hyprland/state_file"
 modes="Available modes are:\e[1m\ncycle (cycles through all options, useful for scripts)\ndefault\nperformance\nbalanced\npower-saver\e[0m"
 
 
