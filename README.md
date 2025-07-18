@@ -22,17 +22,19 @@ My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 * Clipboard Manager: [Clipse](https://github.com/savedra1/clipse)
 * Cursor: [Bibata Modern Classic](https://github.com/ful1e5/Bibata_Cursor/releases)
 * Wallpaper tool  &  Color generation: [swaybg](https://github.com/swaywm/swaybg) or [mpvpaper](https://github.com/GhostNaN/mpvpaper), [pywal16](https://github.com/eylles/pywal16) w/ [wrapper scripts](https://github.com/fleshguard/hyprfiles/blob/main/Scripts/)
+* Battery life optimization using asusctl: ['powermode' wrapper](Scripts/Hyprland/powermode.sh)
 
 ## 
 
 > [!NOTE] 
 > These are my personal dots—theyre not perfect, so you might have to edit some configs or scripts
 >
-> But everything else you need should be below or in 'System Information'
+> But everything else you need should be named or in 'System Information'
 
 ## Fonts 
 Fira Code Retina, Segoe UI Variable, FantasqueSansMono, Cascadia Mono NF, Noto Fonts Emoji, Noto Fonts Symbols, Font Awesome 6, JetBrainsMono Nerd Font  
 
 ## Dependencies for Arch-based distros:
+
 '$ pacman -Sy Hyprland hyprlock hypridle swaybg foot wofi swaync wlogout waybar pywal swayosd'
 
