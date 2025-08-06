@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# add mount action for notification
-# make usb_watch_notification not report block devices and rewrite block_device_watch_notification to be in udevadm and report the ID_MODEL_FROM_DATABASE in notification
-
 play_sound="timer paplay --property=media.role=event"
 
 
