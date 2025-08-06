@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# add mount action for notification
+# make usb_watch_notification not report block devices and rewrite block_device_watch_notification to be in udevadm and report the ID_MODEL_FROM_DATABASE in notification
+
+play_sound="timer paplay --property=media.role=event"
+
+
+timer() {
+  local elapsed=$({ time "$@"; } 2>&1 | grep real | awk '{print $2}')
+  echo -e "\e[2m🔊 $elapsed\e[0m"
+}
+
 
 transient_notification() {
   notify-send -t 3000 -h boolean:transient:true \
@@ -60,12 +71,10 @@ usb_watch_notification() {
         if [[ "$ACTION" == "add" && "$DEVTYPE" == "usb_device" ]]; then
         message="🔗 Device plugged in" 
         message2="$ID_MODEL_FROM_DATABASE"
-        echo "[+] Device plugged in: '$ID_MODEL_FROM_DATABASE'"
-        paplay /usr/share/sounds/freedesktop/stereo/device-added.oga
+        echo "[+] Device plugged in: '$ID_MODEL_FROM_DATABASE' $('$play_sound' /usr/share/sounds/freedesktop/stereo/device-added.oga)"
         transient_notification "$message" "$message2"
       elif [[ "$ACTION" == "remove" && "$DEVTYPE" == "usb_device" ]]; then
-        echo "[-] Device unplugged: '$ID_MODEL_FROM_DATABASE'"
-        paplay /usr/share/sounds/freedesktop/stereo/device-removed.oga
+        echo "[-] Device unplugged: '$ID_MODEL_FROM_DATABASE' $('$play_sound' /usr/share/sounds/freedesktop/stereo/device-removed.oga)"
       fi
       unset ACTION DEVTYPE # ID_MODEL_FROM_DATABASE
     else
@@ -87,13 +96,11 @@ iface_watch_notification() {
   while IFS= read -r line; do
     if [[ -z "$line" ]]; then
       if [[ "$ACTION" == "add" ]]; then
-        echo "[+] Network interface added: $INTERFACE"
+        echo "[+] Network interface added: $INTERFACE $('$play_sound' /usr/share/sounds/freedesktop/stereo/network-connectivity-established.oga)"
         notify-send "🌐 Interface established" "<small>$INTERFACE</small>"
-        paplay /usr/share/sounds/freedesktop/stereo/network-connectivity-established.oga
       elif [[ "$ACTION" == "remove" ]]; then
-        echo "[-] Network interface removed: $INTERFACE"
+        echo "[-] Network interface removed: $INTERFACE $('$play_sound' /usr/share/sounds/freedesktop/stereo/network-connectivity-lost.oga)"
         notify-send "⛓️‍💥 Interface disbanded" "<small>$INTERFACE</small>"
-        paplay /usr/share/sounds/freedesktop/stereo/network-connectivity-lost.oga
       fi
       unset ACTION INTERFACE
     else
@@ -108,9 +115,13 @@ iface_watch_notification() {
 
 power_supply_watch_notification() {
   echo -e "\e[1m[*] Watching power supply ...\e[0m"
+  
+  local THRESHOLD=30
+  local RECOVERY=35
 
   local LAST_ADAPTER_STATE=$(cat /sys/class/power_supply/*/online | grep -m1 . || echo "unknown")
   local LAST_BATTERY_STATE=""
+  local NOTIFIED=0
 
   udevadm monitor --udev --subsystem-match=power_supply --env | \
   while IFS= read -r line; do 
@@ -118,11 +129,9 @@ power_supply_watch_notification() {
       if [[ "$POWER_SUPPLY_NAME" == ADP+([0-9]) ]]; then
         if [[ "$POWER_SUPPLY_ONLINE" != "$LAST_ADAPTER_STATE" ]]; then
           if [[ "$POWER_SUPPLY_ONLINE" == "0" ]]; then
-            echo "[-] Power supply status: Offline"
-            paplay /usr/share/sounds/freedesktop/stereo/power-unplug.oga
+            echo "[-] Power supply status: Offline $('$play_sound' /usr/share/sounds/freedesktop/stereo/power-unplug.oga)"
           else
-            echo "[+] Power supply status: Online"
-            paplay /usr/share/sounds/freedesktop/stereo/power-plug.oga
+            echo "[+] Power supply status: Online $('$play_sound' /usr/share/sounds/freedesktop/stereo/power-plug.oga)"
           fi
           LAST_ADAPTER_STATE="$POWER_SUPPLY_ONLINE"
         fi
@@ -130,21 +139,16 @@ power_supply_watch_notification() {
 
       if [[ "$POWER_SUPPLY_NAME" == BAT+([0-9]) ]]; then
         if [[ "$POWER_SUPPLY_CAPACITY" =~ ^[0-9]+$ ]]; then
-          if [[ "$POWER_SUPPLY_CAPACITY" -lt 30 ]]; then
-            if [[ "$LAST_BATTERY_STATE" != "$POWER_SUPPLY_CAPACITY" ]]; then
-              echo "[!] Power supply capacity: $POWER_SUPPLY_CAPACITY%"
-              notify-send -u critical "🪫 Battery critically low" \
-                "<small>$POWER_SUPPLY_CAPACITY% capacity. Plug in your device!</small>"
-              paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
-              LAST_BATTERY_STATE="$POWER_SUPPLY_CAPACITY"
-            fi
-          else
-            # Reset when above threshold
-            LAST_BATTERY_STATE=""
+          if [[ "$POWER_SUPPLY_CAPACITY" -le "$THRESHOLD" && "$NOTIFIED" == 0 ]]; then
+            echo "[!] Power supply capacity: $POWER_SUPPLY_CAPACITY% $('$play_sound' /usr/share/sounds/freedesktop/stereo/dialog-warning.oga)"
+            notify-send -u critical "🪫 Battery critically low" \
+            "<small>$POWER_SUPPLY_CAPACITY% capacity. Plug in your device!</small>"
+            NOTIFIED=1
+          elif [[ "$POWER_SUPPLY_CAPACITY" -ge "$RECOVERY" && "$NOTIFIED" == 1 ]]; then
+            NOTIFIED=0
           fi
         fi
       fi
-
       unset POWER_SUPPLY_ONLINE POWER_SUPPLY_CAPACITY POWER_SUPPLY_NAME
     else 
       case "$line" in 
