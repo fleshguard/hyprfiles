@@ -1,6 +1,6 @@
 #!/bin/bash
 
-play_sound="timer paplay --property=media.role=event"
+sound_cmd="paplay --property=media.role=event"
 
 
 timer() {
@@ -10,7 +10,7 @@ timer() {
 
 
 transient_notification() {
-  notify-send -t 3000 -h boolean:transient:true \
+  notify-send -t 5000 -h boolean:transient:true \
   -h string:x-canonical-private-synchronous:devwatch_transient_notification "$1" "$2"
 }
 
@@ -68,10 +68,10 @@ usb_watch_notification() {
         if [[ "$ACTION" == "add" && "$DEVTYPE" == "usb_device" ]]; then
         message="🔗 Device plugged in" 
         message2="$ID_MODEL_FROM_DATABASE"
-        echo "[+] Device plugged in: '$ID_MODEL_FROM_DATABASE' $('$play_sound' /usr/share/sounds/freedesktop/stereo/device-added.oga)"
+        echo "[+] Device plugged in: '$ID_MODEL_FROM_DATABASE' $(timer eval "$sound_cmd" /usr/share/sounds/ocean/stereo/device-added.oga)"
         transient_notification "$message" "$message2"
       elif [[ "$ACTION" == "remove" && "$DEVTYPE" == "usb_device" ]]; then
-        echo "[-] Device unplugged: '$ID_MODEL_FROM_DATABASE' $('$play_sound' /usr/share/sounds/freedesktop/stereo/device-removed.oga)"
+        echo "[-] Device unplugged: '$ID_MODEL_FROM_DATABASE' $(timer eval "$sound_cmd" /usr/share/sounds/ocean/stereo/device-removed.oga)"
       fi
       unset ACTION DEVTYPE # ID_MODEL_FROM_DATABASE
     else
@@ -93,10 +93,10 @@ iface_watch_notification() {
   while IFS= read -r line; do
     if [[ -z "$line" ]]; then
       if [[ "$ACTION" == "add" ]]; then
-        echo "[+] Network interface added: $INTERFACE $('$play_sound' /usr/share/sounds/freedesktop/stereo/network-connectivity-established.oga)"
+        echo "[+] Network interface added: $INTERFACE $(timer eval "$sound_cmd" /usr/share/sounds/ocean/stereo/dialog-information.oga)"
         notify-send "🌐 Interface established" "<small>$INTERFACE</small>"
       elif [[ "$ACTION" == "remove" ]]; then
-        echo "[-] Network interface removed: $INTERFACE $('$play_sound' /usr/share/sounds/freedesktop/stereo/network-connectivity-lost.oga)"
+        echo "[-] Network interface removed: $INTERFACE $(timer eval "$sound_cmd" /usr/share/sounds/ocean/stereo/dialog-information.oga)"
         notify-send "⛓️‍💥 Interface disbanded" "<small>$INTERFACE</small>"
       fi
       unset ACTION INTERFACE
@@ -126,9 +126,9 @@ power_supply_watch_notification() {
       if [[ "$POWER_SUPPLY_NAME" == ADP+([0-9]) ]]; then
         if [[ "$POWER_SUPPLY_ONLINE" != "$LAST_ADAPTER_STATE" ]]; then
           if [[ "$POWER_SUPPLY_ONLINE" == "0" ]]; then
-            echo "[-] Power supply status: Offline $('$play_sound' /usr/share/sounds/freedesktop/stereo/power-unplug.oga)"
+            echo "[-] Power supply status: Offline $(timer eval "$sound_cmd" /usr/share/sounds/ocean/stereo/power-unplug.oga)"
           else
-            echo "[+] Power supply status: Online $('$play_sound' /usr/share/sounds/freedesktop/stereo/power-plug.oga)"
+            echo "[+] Power supply status: Online $(timer eval "$sound_cmd" /usr/share/sounds/ocean/stereo/power-plug.oga)"
           fi
           LAST_ADAPTER_STATE="$POWER_SUPPLY_ONLINE"
         fi
@@ -137,7 +137,7 @@ power_supply_watch_notification() {
       if [[ "$POWER_SUPPLY_NAME" == BAT+([0-9]) ]]; then
         if [[ "$POWER_SUPPLY_CAPACITY" =~ ^[0-9]+$ ]]; then
           if [[ "$POWER_SUPPLY_CAPACITY" -le "$THRESHOLD" && "$NOTIFIED" == 0 ]]; then
-            echo "[!] Power supply capacity: $POWER_SUPPLY_CAPACITY% $('$play_sound' /usr/share/sounds/freedesktop/stereo/dialog-warning.oga)"
+            echo "[!] Power supply capacity: $POWER_SUPPLY_CAPACITY% $(timer eval "$sound_cmd" /usr/share/sounds/ocean/stereo/dialog-error-critical.oga)"
             notify-send -u critical "🪫 Battery critically low" \
             "<small>$POWER_SUPPLY_CAPACITY% capacity. Plug in your device!</small>"
             NOTIFIED=1
@@ -173,7 +173,7 @@ main() {
 
 max_lines=1000
 trim=500
-log_file="$HOME/.config/hypr/Scripts/Hyprland/devwatch_logs"
+log_file="$HOME/.config/hypr/Scripts/Logs/devwatch_logs"
 
 if [[ -f "$log_file" ]]; then
   if (( $(wc -l < "$log_file") > max_lines )); then
