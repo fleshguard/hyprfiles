@@ -1,8 +1,7 @@
 @import url("/home/spacerat/.cache/wal/colors-waybar.css");
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FiraCodeRetina, NotoFontsEmoji, FontAwesome, Symbol;
+    font-family: JetBrainsMonoNerdFont, NotoFontsEmoji, FontAwesome;
     font-size: 13.0px;
     min-height: 0px;
     margin-left: 2px;
@@ -10,7 +9,7 @@
 }
 
 window#waybar {
-    background: alpha(@background, 0.70) 70%;
+    background: alpha(@background, 0.80);
     color: @foreground;
     transition-property: background-color;
     transition-duration: .5s;
@@ -20,15 +19,19 @@ window#waybar.empty #window {
   background-color: transparent
 }
 
+/*window#waybar.empty {
+  border-bottom: 1px solid alpha(@foreground, 0.35);
+ box-shadow: inset 0 -1.5px 0 alpha(@background, 0.70);
+}*/
+
+#custom-swaync,
 #custom-applications {
   margin-right: 2px;
-  margin-top: -1px
+  text-shadow: 0px 0px 2px alpha(@color6, .3);
 }
 
-#custom-swaync {
-  margin-bottom: 1px;
-  margin-right: -1px;
-  text-shadow: 0px 0px 2px alpha(@color6, .3);
+#custom-applications {
+  margin-left: -2px;
 }
 
 #custom-bluetooth-status {
@@ -43,28 +46,21 @@ window#waybar.empty #window {
 
 #custom-seperator_2,
 #custom-seperator {
+    margin-top: 1px;
     color: alpha(@foreground, 0.25);
 }
 
+window#waybar.empty #custom-seperator {
+  color: transparent
+}
+
 #custom-expander,
-#power-profiles-daemon.performance,
-#power-profiles-daemon.balanced,
-#power-profiles-daemon.power-saver,
-#custom-wifi-status,
-#custom-power,
 #custom-pacman-updates {
   margin-left: 6px;
   margin-right: 6px;
 }
 
-#custom-splitint:hover,
-#power-profiles-daemon.performance:hover,
-#power-profiles-daemon.balanced:hover,
-#power-profiles-daemon.power-saver:hover,
 #custom-expander:hover,
-#power-profiles-daemon:hover,
-#custom-wifi-status:hover,
-#custom-power:hover,
 #custom-pacman-updates:hover {
   color: @color1;
   transition: color .12s ease-in
@@ -85,15 +81,10 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
-}
-
 #workspaces {
     /*background: alpha(@background, 0.55) 55%;*/
     margin-top: 1px;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     border-radius: 6px;
 }
 
@@ -101,6 +92,7 @@ button:hover {
     text-shadow: 0px 0px 2px alpha(@color6, .2);
     padding: 0 5px;
     color: @color15;
+    transition: color .10s linear
 }
 
 #workspaces button:hover,
@@ -116,11 +108,12 @@ button:hover {
   box-shadow: 0px 0px 5px alpha(@background, .5);
   text-shadow: 0px 0px 5px alpha(@background, .5);
   margin-top: 1px;
-  margin-bottom: 1px
+  margin-bottom: 1px;
+  transition: border-radius .10s linear
 }
 
 #workspaces button.urgent {
-    color: @color3;
+    color: @color1;
 }
 
 #window,
@@ -135,7 +128,6 @@ margin-left: 8px;
 }
 
 #taskbar button {
-  /*padding: 0px;*/
   text-shadow: 0px 0px 2px alpha(@color6, .2);
 	border-top: 1.5px solid alpha(@color6, 0.55);
 	margin-left: 1px;
@@ -160,6 +152,7 @@ margin-left: 8px;
   margin-left: 2px
 }
 
+#custom-uptime,
 #temperature,
 #cpu,
 #memory,
@@ -169,87 +162,80 @@ margin-left: 8px;
 #battery,
 #network,
 #pulseaudio,
-#pulseaudio,
+#backlight,
 #tray,
 #submap {
     color: @foreground;
     padding: 0 10px;
     text-shadow: 0px 0px 2px alpha(@color6, .2);
-    /*background: alpha(@background, 0.55) 55%;
-    border-radius: 6px;*/
 }
 
+#custom-uptime:hover,
 #window:hover,
 #custom-bluetooth-status:hover,
+#custom-splitint:hover,
 #custom-swaync:hover,
 #custom-applications:hover,
 #network:hover,
 #clock:hover,
 #cpu:hover,
 #memory:hover, 
-#pulseaudio:hover,
+/*#pulseaudio:hover,*/
+#pulseaudionslider:hover,
+#pulseaudionslider:hover #pulseaudio,
+#backlight:hover,
 #battery:hover,
 #temperature:hover {
   border-radius: 6px;
-	background-color: @foreground;
+	background-color: @color6;
 	color: @background;
   transition: all .12s ease-in
 
 }
 
+#custom-splitint {
+  color: @color6
+}
+
 #submap {
-  background: alpha(@background, 0.45) 45%;
-  color: @color12;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px alpha(@background, .30);
+  background: linear-gradient(
+    180deg,
+    alpha(@color1, 0.90) 50%,
+    alpha(@color1, 0.85)
+    );
+  color: @background;
+  border-radius: 6px;
+  margin-top: 2px;
+  margin-bottom: 2px;
   transition: all .30s ease-in
 }
 
 @keyframes battery_blink {
     to {
         color: @foreground;
-        color: @color2;
+        color: @color1;
     }
 }
 
 #battery {
-  margin-top: 1px;
   margin-right: -3px
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
  animation-name: battery_blink;
- animation-duration: 2s;
+ animation-duration: 2.5s;
  animation-timing-function: linear;
  animation-iteration-count: infinite;
  animation-direction: alternate;
- color: @color2
 }
 
 #battery.charging {
-    animation-name: battery_blink;
     color: @color6
 }
 
-#power-profiles-daemon {
-  margin-left: 8px;
-  margin-right: -7px
-}
-
-#power-profiles-daemon.performance {
-    background-color: transparent;
-    color: @foreground;
-}
-
-#power-profiles-daemon.balanced {
-    background-color: transparent;
-    color: @transparent;
-}
-
-#power-profiles-daemon.power-saver {
-    background-color: transparent;
-    color: @transparent;
+#network.wifi {
+  margin-right: 4px;
 }
 
 #network.disconnected {
@@ -257,14 +243,62 @@ margin-left: 8px;
 }
 
 #pulseaudio {
+  color: @color6;
 }
 
 #pulseaudio.muted {
     color: @color1;
 }
 
+#backlightnslider,
+#pulseaudionslider {
+  margin-right: -2px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+  background: transparent;
+  transition: all 0.5s;
+}
+
+#backlight-slider slider,
+#pulseaudio-slider slider {
+  min-height: 0px;
+  min-width: 0px;
+  background: @color6;
+  border: none;
+  box-shadow: 0px 0px 2px alpha(@color6, .2);
+}
+
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+  margin-left: -4px;
+  min-height: 8px;
+  min-width: 50px;
+  border-radius: 2px;
+  border: none;
+  background: @color3;
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+  min-width: 10px;
+  border-radius: 2px;
+  border: 0px solid @background;
+  background: @color6;
+}
+
+#backlight {
+}
+
+#cpu {
+}
+
+#memory {
+  margin-right: -2px;
+}
+
 #tray {
-  padding: 0px 6px; 
+  padding: 0px 6px;
 }
 
 #tray > .passive {

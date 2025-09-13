@@ -9,24 +9,28 @@
     "spacing": -2, // Gaps between modules (4px)
     "modules-left": [
   "custom/applications",
-  "hyprland/workspaces",
+  "cpu",
+  "memory",
   "custom/seperator",
 	//"wlr/taskbar",
-  "custom/splitint",
   "hyprland/window"
     ],
     "modules-center": [
-      "hyprland/submap"
+      "hyprland/submap",
+      "custom/splitint",
+      "hyprland/workspaces"
     ],
     "modules-right": [
+  "group/expand",
 	"network",
   "custom/bluetooth-status",
-	"pulseaudio",
+  //"group/backlightnslider"
+  "backlight",
+	"group/pulseaudionslider",
   "battery",
-  "custom/seperator",
+  "custom/seperator_2",
   "clock",
-  "custom/swaync",
-  "group/expand"
+  "custom/swaync"
     ],
        "hyprland/workspaces": {
          "disable-scroll": true,
@@ -61,12 +65,12 @@
 
 
 "custom/seperator": {
-    "format": "<span font='GohuFont 14 Nerd Font Mono 10'> |</span>",
+    "format": "<span font='JetBrainsMono Nerd Font Bold 9.5'> |</span>",
     "tooltip": false
 },
 
 "custom/seperator_2": {
-    "format": "<span font='GohuFont 14 Nerd Font Mono 11.5'> </span>",
+    "format": "<span font='JetBrainsMono Nerd Font Bold 9.5'> |</span>",
     "tooltip": false
 },
 
@@ -75,7 +79,7 @@
   "all-outputs": false,
   "icon-size": 16.5,
 	"tooltip": true,
-	"format": "{icon} {title}",
+	"format": "{icon}", //{title}
 	"tooltip-format": "{name}\nAPPID: {app_id}\nWindow State: {state} [{short_state}] \n\n{name}",
   "on-click-middle": "close",
   "on-click": "minimize-raise",
@@ -86,7 +90,7 @@
 
 "hyprland/window": {
   "separate-outputs": true,
-	"format": "<span font ='Fira Code SemiBold'>{title}</span>",
+	"format": "<span font ='JetBrainsMono Nerd Font Bold'>{title}</span>",
 	"icon": true,
 	"icon-size": 19,
 	"tooltip-format": "{title}\n\n{class}, {initialClass}",
@@ -95,9 +99,19 @@
     },
 
     "custom/expander": {
-      "format": "<span font='Font Awesome 6 Free 9'> </span>",
+      "format": "<span font='JetBrainsMono Nerd Font Bold 8.5'> </span>",
       "tooltip": false
     },
+
+  "group/pulseaudionslider": {
+    "orientation": "horizontal",
+    "modules": ["pulseaudio", "pulseaudio/slider"]
+  },
+
+  "group/backlightnslider": {
+    "orientation": "horizontal",
+    "modules": ["backlight", "backlight/slider"]
+  },
 
     "group/expand": {
       "orientation": "horizontal",
@@ -106,40 +120,41 @@
           "transition-to-left": true,
           "click-to-reveal": true
     },
-    "modules": ["custom/expander", /* "custom/power", "power-profiles-daemon", "custom/pacman-updates", */ "tray"]
+    "modules": ["custom/expander", "tray"]
 
 
         },
     "tray": {
         "icon-size": 18.0,
-        "spacing": 10
+        "spacing": 12
     },
 
     "clock": {
         /*"timezone": "America/x",*/
         "interval": 1,
 	      "tooltip-format": "<big>{:%Y %B, %d | %A\n%r}</big>\n\n<tt><big>{calendar}</big></tt>",
-        "format": "<span font='Fira Code SemiBold 9.5'>{:%a %b %d  %I:%M %p}</span>"
+        "format": "<span font='JetBrainsMono NF Bold 9.5'>{:%a %b %d  %I:%M %p}</span>"
     },
 
     "custom/applications": {
-      "format": "<span font='Font Awesome 6 Free 16'></span>",
-	    "tooltip": false,
-	    "on-click": "pkill -x wofi || wofi -I -H 500 -W 500 --show drun",
-      "on-click-right": "hyprctl dispatch overview:toggle"
+      "format": "   <span font='JetBrainsMono NF Bold 9.5'>{}</span>",
+      "exec": "uptime -p | sed -E 's/up //; s/([0-9]+) day(s)?(,? )?/\\1d /g; s/([0-9]+) hour(s)?(,? )?/\\1h /g; s/([0-9]+) minute(s)?/\\1m/; s/ +/ /g; s/ $//'",
+      "interval": 60,
+      "on-click": "pkill -x wofi || wofi -I --show drun",
+      "on-click-right": "hyprctl dispatch overview:toggle",
+
+      "tooltip": false
     },
-    
+
     "cpu": {
-        "format": "  {usage}% ",
-        "format": "<span font='Font Awesome 6 Free 10'>   </span>{usage}%",
-      	"interval": 3,
+        "format": "  {usage}%",
+      	"interval": 5,
         "tooltip-format": "{usage{n}}"
     },
 
     "memory": {
-        "format": "  {used}GiB ",
-        "format": "<span font='Font Awesome 6 Free 10'>   </span>{used}GiB",
-	      "interval": 3,
+        "format": "  {percentage}%",
+	      "interval": 10,
 	      "tooltip-format": "Avail: {used}GiB of {avail}GiB\nSWAP: {swapUsed}GiB of {swapTotal}GiB\nTotal Used: {total}GiB"
     },
 
@@ -147,7 +162,7 @@
         "tooltip-format": "Temperature from thermal zone\n	     {temperatureC}°C",
 	      // "thermal-zone": 2,
         "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
+        "critical-threshold": 85,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "", ""]
@@ -157,49 +172,68 @@
         "states": {
             "good": 75,
             "warning": 35,
-            "critical": 15
+            "critical": 30
         },
 	      "interval": 2,
-        "format": "<span font='Font Awesome 6 Free 10'>{icon}  </span>{capacity}%",
-        "format-full": "<span font='Font Awesome 6 Free 10'>{icon}  </span>{capacity}%",
-        "format-charging": "<span font='Font Awesome 6 Free 10'> </span>+ {capacity}%",
-        "format-plugged": "<span font='Font Awesome 6 Free 10'>  </span>- {capacity}%",
+        "format": "{icon}  {capacity}%",
+        "format-full": "{icon}  {capacity}%",
+        "format-charging": " + {capacity}%",
+        "format-plugged": "<  - {capacity}%",
         "format-tooltip": "{capacity}%\n{time}",
-        "format-icons": [" ", " ", " ", " ", " "]
+        "format-icons": ["", "", "", "", ""]
    },
 
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "<span font='Font Awesome 6 Free 14'>{icon}  </span>}",
-        "format-ethernet": "<span font='Font Awesome 6 Free 15.0' rise='-2000' >{icon}</span>",
+        "format-wifi": "{icon}  ({signalStrength}%) {essid}",
+        "format-ethernet": "   ({ifname}) Wired",
         "tooltip-format": "{ipaddr} on {ifname}\nessid: {essid}, ({signalStrength}%)\n{bandwidthUpBits}    {bandwidthDownBits}",
-        "format-linked": "<span font='Font Awesome 6 Free 14'>{icon}  </span>?",
-        "format-disconnected": "<span font='Font Awesome 6 Free 14'>{icon}  </span>",
-	      "on-click": "pkill -x impala || foot -e --title=impala impala",
-        "format-icons": {
-          "wifi": "",
-          "ethernet": "󰈀",
-          "disconnected": ""
-        }
+        "format-linked": "󰌙  Unknown",
+        "format-disconnected": "󰌙  Disconnected", /* 󱄁*/
+	      "on-click": "foot -e --title=nmtui-foot nmtui",
+	      //"on-click": "nm-connection-editor",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+
     },
 
     "pulseaudio": {
-        "format": "<span font='Font Awesome 6 Free 9.0'>{icon}   </span>{volume}%",
-        "format-bluetooth": "<span font='Font Awesome 6 Free 9.0'>{icon}    </span>{volume}%",
-        "format-muted": "<span font='Font Awesome 6 Free 9.0'>    </span>{volume}%",
-        "format-bluetooth-muted": "    {icon} {format_source}",
-        "format-source": "{volume}%",
-        "format-source-muted": "",
+        "format": "{format_source}{icon}",
+        "format-bluetooth": "{icon}   {volume}%",
+        "format-muted": "{format_source}",
+        "format-bluetooth-muted": "   {format_source}",
+        "format-source": "  {volume}%   ",
+        "format-source-muted": "    ",
         "format-icons": {
-            "default": ["", "", " "]
+            "default": ["", "", ""]
         },
         "on-click": "pkill -x pavucontrol || pavucontrol",
         "on-click-right": "pamixer -t"
   
     },
 
+    "pulseaudio/slider": {
+      "min": 0,
+      "max": 120,
+      "orientation": "horizontal"
+    },
+
+    "backlight": {
+        //"device": "amdgpu_bl2",
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip": "true",
+        "tooltip-format": "Backlight: {percent}%"
+    },
+
+    "backlight/slider": {
+      "min": 0,
+      "max": 100,
+      "orientation": "horizontal",
+      //"device": "amdgpu_bl2"
+    },
+
     "custom/splitint": {
-      "format": "<span font='Font Awesome 6 Free 9'>{}</span>",
+      "format": "<span font='JetBrainsMono NF Bold'>{}</span>",
       "exec": "~/.config/hypr/Scripts/Waybar/force_split_output-waybar.sh",
       "interval": 1,
       "on-click": "~/.config/hypr/Scripts/Waybar/force_split_toggle.sh",
@@ -207,14 +241,15 @@
     },
 
     "custom/bluetooth-status": {
-      "format": "<span font='Font Awesome 6 Free 14.5'>{}</span>",
+      "format": "<span font='JetBrainsMono Nerd Font 12.0'>{}</span>",
       "exec": "~/.config/hypr/Scripts/Waybar/bluetooth_status.sh",
       "tooltip": false,
-      "interval": 2
+      "interval": 2,
+      "on-click": "foot -e bluetoothctl"
     },
 
     "custom/swaync": {
-      "format": "<span font='FiraCodeRetina 14.0'> {} </span>",
+      "format": "<span font='JetBrainsMono Nerd Font 10.5'> {} </span>",
       "exec": "~/.config/hypr/Scripts/Waybar/swaync-icon.sh",
       "on-click": "swaync-client -t",
       "tooltip": false,
