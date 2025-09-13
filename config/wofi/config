@@ -1,2 +1,14 @@
-prompt=Applications ...
-image_size=25
+xoffset=5
+yoffset=5
+
+height=1080
+width=500
+
+key_up=Ctrl-k
+key_down=Ctrl-j
+key_left=Ctrl-h
+key_right=Ctrl-l
+
+prompt= Applications ...
+allow_images=true
+image_size=28

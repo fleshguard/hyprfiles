@@ -3,35 +3,53 @@
 * {
 }
 
+#expander-box,
 window {
-	font-size: 14.5px;
-	font-family: "JetBrainsMono", "Symbols";
-  background: alpha(@background, 0.65) 70%;
-	border-radius: 10;
-	color: #ffffff;
+	font-size: 16.0px;
+	font-family: "JetBrainsMono NF Medium";
+  background: alpha(@background, 0.80);
+	border-radius: 0px;
+  border: 1px solid alpha(@color6, 0.50);
 }
 
+#expander-box {
+  margin: 10px;
+}
+
+#expander-box:selected,
 #entry:selected {
-  background: alpha(@color3, 0.45) 45%;
-	border: 2px solid;
-	border-radius: 10px;
-	border-color: @color6;
-	padding: 0.15em;
-	margin-left: 6;
-	margin-right: 6
+  background: alpha(@color6, 0.80);
+	border-radius: 4px;
+	padding: 6px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+  transition: all .1s ease-in;
 }
 
+#text:selected {
+  color: @background;
+  font-family: "JetBrainsMono NF SemiBold"
+}
+
+text:unselected {
+  @foreground;
+}
+
+#expander-box,
 #entry:unselected {
-	color: #ffffff;
-	padding: 0.15em;
-	border-radius: 5
+	padding: 10px;
+}
+
+#img {
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 #input {
-  background: alpha(@background, 0.50) 45%;
-	margin: 7px;
-	margin-bottom: 5;
-	color: #ffffff;
-	border: 2px solid;
-	border-color: @color6
+  background: alpha(@background, 1);
+	margin: 20px;
+  padding: 6px;
+	border: 1.5px solid alpha(@color6, 0.50);
 }
