@@ -19,14 +19,12 @@ My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 * Notification Manager: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
 * Clipboard Manager: [Clipse](https://github.com/savedra1/clipse)
 * Cursor: [Bibata Modern Classic](https://github.com/ful1e5/Bibata_Cursor/releases)
-* Wallpaper tool  &  Color generation: [swaybg](https://github.com/swaywm/swaybg) or [mpvpaper](https://github.com/GhostNaN/mpvpaper), [pywal16](https://github.com/eylles/pywal16) w/ [wrapper scripts](https://github.com/fleshguard/hyprfiles/blob/main/Scripts/)
-* Battery life optimization using asusctl: ['powermode' wrapper](Scripts/Hyprland/powermode.sh)
 
 ## 
 
 > [!NOTE] 
-> These are my personal dots—theyre not perfect, so you might have to edit some configs or scripts
+> These are my personal dotfiles, they are not perfect, or complete. You may have to edit some things.
 >
-> But everything else you need should be named or in 'System Information'
+> Everything else you need should be named or in 'System Information'
 
 
