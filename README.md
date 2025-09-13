@@ -1,20 +1,18 @@
 #  Hyprfiles
 
-![GitHub repo size](https://img.shields.io/github/repo-size/fleshguard/hyprfiles?style=for-the-badge&label=Size&labelColor=393e64&color=7579a8)
-
 ![r/unixporn](https://www.reddit.com/r/unixporn/comments/1kz4jrr/hyprland_first_rice_as_a_9_month_old_baby/) • ![r/hyprland crosspost](https://www.reddit.com/r/hyprland/comments/1kz8lxe/first_setup_as_a_9_month_old_baby/)
 
 My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 
 ##
-[See Hyprlock in gallery](Github/06-14-25-0718PM_511997221.png)
+[See Hyprlock in gallery](Github/2.png)
 
-![img](Github/grim-2025-05-30_0811.png)
+![img](Github/1.png)
 
 
 ## System Information:
-* OS: [Artix GNU/Linux](https://artixlinux.org/)
-* Terminal Emulator: [foot](https://wiki.archlinux.org/title/Foot)
+* OS: [Arch GNU/Linux](https://archlinux.org/)
+* Terminal Emulator: [kitty](https://github.com/kovidgoyal/kitty)
 * Window Manager: [Hyprland](https://hyprland.org/)
 * Bar: [waybar](https://man.archlinux.org/man/waybar.5.en)
 * Launcher: [wofi](https://man.archlinux.org/man/wofi.1)
@@ -31,10 +29,4 @@ My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 >
 > But everything else you need should be named or in 'System Information'
 
-## Fonts 
-Fira Code Retina, Segoe UI Variable, FantasqueSansMono, Cascadia Mono NF, Noto Fonts Emoji, Noto Fonts Symbols, Font Awesome 6, JetBrainsMono Nerd Font  
-
-## Dependencies for Arch-based distros:
-
-'$ pacman -Sy Hyprland hyprlock hypridle swaybg foot wofi swaync wlogout waybar pywal swayosd'
 
