@@ -1,0 +1,71 @@
+{
+  //"$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "/home/spacerat/.config/fastfetch/Img/konataSmirk",
+    "color": {
+    "1": "0;94;94",
+    "2": "38;33;0"
+    }
+  },
+  "display": {
+    "separator": " "
+  },
+  "modules": [
+    {
+      "type": "title",
+      "format": "|──────────~Software~────────────|"
+    },
+    {
+      "type": "os",
+      "key": "    ~",
+      "keyColor": "white"
+    },
+    {
+      "type": "kernel",
+      "key": "    ~",
+      "keyColor": "white"
+    },
+    {
+      "type": "shell",
+      "key": "    ~",
+      "keyColor": "white"
+    },
+    {
+      "type": "wm",
+      "key": "    ~",
+      "keyColor": "white"
+    },
+    {
+      "type": "terminal",
+      "key": "    ~",
+      "keyColor": "white"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "|───────────~Hardware~───────────|"
+    },
+    {
+      "type": "cpu",
+      "key": "    ~",
+      "keyColor": "white"
+    },
+    {
+      "type": "gpu",
+      "key": "    ~",
+      "keyColor": "white"
+    },
+    {
+      "type": "memory",
+      "key": " 󰧑   ~",
+      "keyColor": "white"
+    },
+    "break",
+     {
+            "type": "custom",
+        "keyColor": "blue",
+            "format": "\u001b[90m ▂▂  \u001b[31m▂▂  \u001b[32m▂▂  \u001b[33m▂▂  \u001b[34m▂▂  \u001b[35m▂▂  \u001b[36m▂▂  \u001b[37m▂▂ "
+        },
+    /*"colors"*/
+  ]
+}
