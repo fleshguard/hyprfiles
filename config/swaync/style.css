@@ -1,12 +1,12 @@
 @import url("/home/spacerat/.cache/wal/colors-waybar.css");
 
 @define-color cc-bg rgba(22, 23, 27, 0.30);
-@define-color cc-border alpha(@foreground, 0.20);
+@define-color cc-border alpha(@color6, 0.50);
 @define-color noti-border-color rgba(55, 55, 55, 1);
-@define-color noti-bg alpha(@color6, 0.12);
+@define-color noti-bg alpha(@color6, 0.30);
 @define-color noti-bg-opaque rgb(48, 48, 48);
 @define-color noti-bg-darker rgb(38, 38, 38);
-@define-color noti-bg-hover @color3;
+@define-color noti-bg-hover alpha(@color6, 0.85);
 @define-color noti-bg-hover-opaque rgb(61, 70, 104);
 @define-color noti-bg-focus rgba(68, 68, 68, 0.6);
 @define-color noti-close-bg rgba(16, 16, 16, 0.27);
@@ -19,11 +19,10 @@
 }
 
 * {
-  font-family: FiraCodeRetina, NotoFontsEmoji, FontAwesome, Symbol;
+  font-family: JetBrainsMonoNerdFont, NotoFontsEmoji;
 }
 
 .notification-row:focus, .notification-row:hover {
-  background: @noti-bg-focus;
 }
 
 .notification-row .notification-background {
@@ -32,7 +31,7 @@
 
 .notification-row .notification-background .close-button {
   /* The notification Close Button */
-  background: @noti-close-bg;
+  background: alpha(@background, 1);
   color: @text-color;
   text-shadow: none;
   padding: 0;
@@ -45,18 +44,18 @@
 }
 
 .notification-row .notification-background .close-button:hover {
-  box-shadow: none;
-  background: @noti-close-bg-hover;
+  background: @foreground;
+  color: @background;
   transition: background 0.15s ease-in-out;
 }
 
 .notification-row .notification-background .notification {
   /* The actual notification */
-  border-radius: 12px;
-  background: alpha(@background, 0.70);
-  border: 1.0px solid alpha(@foreground, 0.55);
+  border-radius: 0px;
+  background: alpha(@background, 0.80);
+  border: 1.0px solid alpha(@color6, 1);
   padding: 0px;
-  transition: background 0.35s ease-in-out
+  transition: all 1s fade-in
 }
 
 .notification-row .notification-background .notification.low {
@@ -81,16 +80,15 @@
   transition: background 0.15s ease-in-out;
 }
 
+/* NOTI HOVER */
 .notification-row .notification-background .notification .notification-action:hover, .notification-row .notification-background .notification .notification-default-action:hover {
-  -gtk-icon-effect: none;
   background: @noti-bg-hover;
-
-  border: 0px solid transparent;
+  border-color: @color1;
+  border-radius: 0px;
 }
 
 .notification-row .notification-background .notification .notification-default-action {
   /* The large action that also displays the notification summary and body */
-  border-radius: 12px;
 }
 
 .notification-row .notification-background .notification .notification-default-action:not(:only-child) {
@@ -101,14 +99,13 @@
 
 .notification-row .notification-background .notification .notification-default-action .notification-content {
   background: transparent;
-  border-radius: 12px;
   padding: 4px;
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .image {
   /* Notification Primary Image */
   -gtk-icon-effect: none;
-  border-radius: 100px;
+  /*border-radius: 100px;*/
   /* Size in px */
   margin: 4px;
 }
@@ -135,8 +132,8 @@
   font-weight: bold;
   background: transparent;
   color: @text-color;
-  text-shadow: none;
-  margin-right: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
@@ -262,15 +259,15 @@
 }
 
 .notification-group.collapsed:hover .notification-row:not(:only-child) .notification {
-  background-color: @noti-bg-hover-opaque;
+  background-color: @noti-bg-hover;
 }
 
 .control-center {
   /* The Control Center which contains the old notifications + widgets */
   border: 1px solid @cc-border;
   color: @text-color;
-  background: alpha(@background, 0.65) 55%;
-  border-radius: 5px;
+  background: alpha(@background, 0.85);
+  border-radius: 0px;
 }
 
 .control-center .control-center-list-placeholder {
@@ -315,71 +312,54 @@
 .widget-title {
   color: @text-color;
   margin: 8px;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .widget-title > button { /*  CLEAR ALL */
   padding: 5px 15px 5px;
-  font-size: 16.5;
   color: @text-color;
-  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(
-    180deg,
-    alpha(@color6, 0.10) 50%,
-    alpha(@color6, 0.12)
-    );
-  border: 0px solid transparent;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
-  border-radius: 7px;
+  background: alpha(@color2, 1);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
 }
 
 .widget-title > button:hover {
-  border: 0px solid transparent;
-  background: linear-gradient(
-    180deg,
-    alpha(@noti-bg-hover, 0.85) 50%,
-    alpha(@noti-bg-hover, 0.88)
-    );
+  background: alpha(@color6, 1);
+  color: @background;
+  transition: all .3s ease;
 }
 
 /* DND widget */
 .widget-dnd {
   color: @text-color;
   margin: 12px;
-  font-size: 1.1rem;
+  margin: 11px 0 0;
+  font-size: 1rem;
 }
 
 .widget-dnd > switch {
-  padding: 1.5 2px;
+  padding: 3px;
   font-size: initial;
-  border-radius: 12px;
+  border-radius: 4px;
   border: 0px solid @transparent;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(
-    180deg,
-    alpha(@color6, 0.10) 50%,
-    alpha(@color6, 0.12)
-    );
+  background: alpha(@color6, 0.15);
 
 }
 
 .widget-dnd > switch:checked {
-  background: linear-gradient(
-    180deg,
-    alpha(@color3, 0.85) 50%,
-    alpha(@color3, 0.88)
-    );
-}
-
-.widget-dnd > switch slider {
-  background: alpha(@color3, 0.65);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
-  border: 2px solid transparent;
-  border-radius: 12px;
+  background: alpha(@color2, 1);
 }
 
 .widget-dnd > switch:checked slider {
-  border: 2.0px solid alpha(@color6, 0.30);
+  background: alpha(@background, 0.80);
+}
+
+.widget-dnd > switch slider {
+  background: alpha(@color2, 1);
+  border: 3px solid transparent;
+  border-radius: 4px;
+  min-width: 18px;
+  min-height: 18px;
 }
 
 /* Label widget */
@@ -392,18 +372,20 @@
 }
 
 /* Mpris widget */
-@define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
-@define-color mpris-button-hover rgba(0, 0, 0, 0.50);
 .widget-mpris {
   /* The parent to all players */
+  background: alpha(@background, 1);
+  border: 2.5px solid alpha(@color6, 0.15);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.60);
+  border-radius: 4px;
+  margin: 10px 20px 10px 20px;
 }
 
 .widget-mpris .widget-mpris-player {
-  padding: 8px;
-  padding: 16px;
-  margin: 16px 20px;
-  background-color: @mpris-album-art-overlay;
-  border-radius: 12px;
+  color: @text;
+  margin: 0 5px;
+  background-color: @background;
+  /*background-color: @mpris-album-art-overlay;*/
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.60);
 }
 
@@ -413,13 +395,12 @@
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-album-art {
-  border-radius: 12px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-title {
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-subtitle {
@@ -451,16 +432,12 @@
 
 /* Buttons widget */
 .widget-buttons-grid {
-  font-size: 25px;
+  font-size: 1.3rem;
   padding: 0px;
   margin: 20px;
-  border: 1.5px solid alpha(@color6, 0.15);
-  border-radius: 8px;
-  background: linear-gradient(
-    180deg,
-    alpha(@color6, 0.10) 50%,
-    alpha(@color6, 0.12)
-    );
+  border: 1.5px solid alpha(@color6, 0.50);
+  border-radius: 4px;
+  background: alpha(@background, 0.90);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.60);
 }
 
@@ -479,12 +456,8 @@
 .widget-buttons-grid > flowbox > flowboxchild > button:hover,
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
   border: 0px solid @noti-bg-hover;
-  border-radius: 7px;
-  background: linear-gradient(
-    180deg,
-    alpha(@color3, 0.70) 50%,
-    alpha(@color3, 0.80)
-    );
+  border-radius: 8px;
+  background: @noti-bg-hover;
 }
 
 /* Menubar widget */
@@ -569,5 +542,6 @@
 .notification-group-collapse-button:hover,
 .notification-group-close-all-button:hover {
   background: @noti-bg-hover;
-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  color: @foreground;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
 }

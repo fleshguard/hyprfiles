@@ -1,6 +1,6 @@
 {
   "$schema": "/etc/xdg/swaync/configSchema.json",
-  "positionX": "left",
+  "positionX": "right",
   "positionY": "top",
   "layer": "overlay",
   "control-center-layer": "top",
@@ -67,43 +67,37 @@
     "title": {
       "text": "󰂚  Notifications",
       "clear-all-button": true,
-      "button-text": "  Clear"
+      "button-text": "  "
     },
     "dnd": {
-      "text": "󰂛  Do Not Disturb"
+      "text": "  Do Not Disturb"
     },
     "label": {
       "max-lines": 5,
       "text": "Label Text"
     },
     "mpris": {
-      "image-size": 96,
-      "image-radius": 12
+      "image-size": 106,
+      "image-radius": 1000
     },
     "buttons-grid": {
       "actions": [
         {
-          "label": "",
+          "label": "",
           "type": "toggle",
           "active": false,
           "command": "bash ~/.config/hypr/Scripts/Swaync/idle_inhibitor-swaync.sh"
         },
         {
-          "label": "󰈀",
-          "type": "toggle",
-          "active": true,
-          "command": "/home/spacerat/.config/hypr/Swaync/Scripts/eth0_toggle-swaync.sh"
+          "label": "",
+          "command": "/home/spacerat/.config/hypr/Swaync/Scripts/kdeconnectd_toggle.sh"
         },
         {
           "label": "",
-          "type": "toggle",
-          "active": false,
-          "command": "~/.config/hypr/Scripts/Swaync/wifi_toggle-swaync.sh"
+          "command": "~/.config/hypr/Scripts/Swaync/wifi_toggle.sh"
         },
         {
-          "label": "󰂯",
-          "type": "toggle",
-          "active": true,
+          "label": "",
           "command": "~/.config/hypr/Scripts/Swaync/bluetooth_toggle-swaync.sh"
         },
         {
