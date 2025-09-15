@@ -1,6 +1,6 @@
 # version: 1.0.0
 
-add_newline = true
+add_newline = false
 continuation_prompt = "[▸▹ ](dimmed white)"
 
 format = """($nix_shell$container$git_metrics\n)$cmd_duration\ 
@@ -12,6 +12,7 @@ $env_var\
 $jobs\
 $sudo\
 $username\
+$os\
 $character"""
 
 right_format = """
@@ -84,7 +85,6 @@ $azure\
 $crystal\
 $custom\
 $status\
-$os\
 $battery\
 $time"""
 
@@ -93,22 +93,80 @@ symbol = ' '
 
 [character]
 format = "$symbol "
-success_symbol = "[ 󰅂](bold italic bright-yellow)"
-error_symbol = "[ 󰅂](italic purple)"
-vimcmd_symbol = "[ 󰅂](italic dimmed green)"
+success_symbol = "[󰅂](bold bright-yellow)"
+error_symbol = "[󰅂](bold purple)"
+vimcmd_symbol = "[](bold bright-yellow)"
 # not supported in zsh
-vimcmd_replace_one_symbol = "◌"
-vimcmd_replace_symbol = "□"
-vimcmd_visual_symbol = "▼"
+vimcmd_replace_one_symbol = " Replace one"
+vimcmd_replace_symbol = " Replace"
+vimcmd_visual_symbol = " Visual"
 
 [env_var.VIMSHELL]
 format = "[$env_value]($style)"
 style = 'green italic'
 
+[os]
+format = "on [($type $symbol)]($style)"
+style = "bold blue"
+disabled = false
+
+[os.symbols]
+AIX = "➿ "
+Alpaquita = "🔔 "
+AlmaLinux = "💠 "
+Alpine = "🏔️ "
+Amazon = "🙂 "
+Android = "🤖 "
+Arch = "󰣇 "
+Artix = " "
+Bluefin = "🐟 "
+CachyOS = "🎗️ "
+CentOS = "💠 "
+Debian = "🌀 "
+DragonFly = "🐉 "
+Emscripten = "🔗 "
+EndeavourOS = "🚀 "
+Fedora = " "
+FreeBSD = "😈 "
+Garuda = "🦅 "
+Gentoo = "🗜️ "
+HardenedBSD = "🛡️ "
+Illumos = "🐦 "
+Kali = "🐉 "
+Linux = "🐧 "
+Mabox = "📦 "
+Macos = "🍎 "
+Manjaro = "🥭 "
+Mariner = "🌊 "
+MidnightBSD = "🌘 "
+Mint = "🌿 "
+NetBSD = "🚩 "
+NixOS = "󱄅 "
+Nobara = "🎩 "
+OpenBSD = "🐡 "
+OpenCloudOS = "☁️ "
+openEuler = "🦉 "
+openSUSE = "🦎 "
+OracleLinux = "🦴 "
+Pop = "🍭 "
+Raspbian = "🍓 "
+Redhat = "🎩 "
+RedHatEnterprise = "🎩 "
+RockyLinux = "💠 "
+Redox = "🧪 "
+Solus = "⛵ "
+SUSE = "🦎 "
+Ubuntu = "🎯 "
+Ultramarine = "🔷 "
+Unknown = "❓ "
+Uos = "🐲 "
+Void = "  "
+Windows = "🪟 "
+
 [sudo]
 format = "[$symbol]($style)"
 style = "bold italic bright-purple"
-symbol = "⋈┈"
+symbol = "⋈ "
 disabled = false
 
 [username]
@@ -119,10 +177,10 @@ disabled = false
 show_always = false
 
 [directory]
-home_symbol = "󱂵 "
-truncation_length = 2
-truncation_symbol = "□ "
-read_only = " 󰢬 "
+#home_symbol = "󱂵 "
+#truncation_length = 2
+#truncation_symbol = "□ "
+read_only = "  "
 use_os_path_sep = true
 style = "italic blue"
 format = '[$path]($style)[$read_only]($read_only_style)'
@@ -130,7 +188,7 @@ repo_root_style = 'bold blue'
 repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [△](bold bright-blue)'
 
 [cmd_duration]
-format = "[󱎫 $duration ](italic white)"
+format = "[󱎫 $duration ](semibold white)"
 
 [jobs]
 format = "[$symbol$number]($style) "
@@ -145,7 +203,7 @@ disabled = false
 [time]
 disabled = false
 format = "[ $time]($style)"
-time_format = "%r"
+time_format = "%I:%M:%S %p"
 utc_time_offset = "local"
 style = "semibold dimmed white"
 
