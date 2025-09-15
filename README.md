@@ -1,6 +1,6 @@
 #  Hyprfiles
 
-![r/unixporn](https://www.reddit.com/r/unixporn/comments/1kz4jrr/hyprland_first_rice_as_a_9_month_old_baby/) • ![r/hyprland crosspost](https://www.reddit.com/r/hyprland/comments/1kz8lxe/first_setup_as_a_9_month_old_baby/)
+![r/unixporn](https://www.reddit.com/r/unixporn/comments/1kz4jrr/hyprland_first_rice_as_a_9_month_old_baby/) <sup>![2](https://www.reddit.com/r/unixporn/comments/1nfrb4f/hyprland_meow/)</sup> • ![r/hyprland crosspost](https://www.reddit.com/r/hyprland/comments/1kz8lxe/first_setup_as_a_9_month_old_baby/)
 
 My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 
