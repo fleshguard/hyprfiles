@@ -1,0 +1,41 @@
+@import url("/home/spacerat/.cache/wal/colors-waybar.css");
+
+window#osd {
+  padding: 5px 10px 5px;
+  border-radius: 4px;
+  border: 1.0px solid alpha(@foreground, 0.80);
+  background: alpha(@background, 0.80);
+
+  #container {
+    margin: 16px;
+  }
+
+  image,
+  label {
+    color: @theme_fg_color;
+  }
+
+  progressbar:disabled,
+  image:enabled {
+    opacity: 0.5;
+  }
+
+  progressbar {
+    min-height: 6px;
+    border-radius: 100%;
+    background: transparent;
+    border: none;
+  }
+  trough {
+    min-height: inherit;
+    border-radius: inherit;
+    border: none;
+    /*background: #{"alpha(@theme_fg_color, 0.5)"};*/
+  }
+  progress {
+    min-height: inherit;
+    border-radius: inherit;
+    border: none;
+    background: @theme_fg_color;
+  }
+}
