@@ -5,7 +5,7 @@
 My dotfiles for Hyprland, with left-hand centered keybinds/submaps
 
 ##
-[See Gallery](Github/)
+[See Gallery](Github/) • [See Wallpapers](https://drive.proton.me/urls/RZQ5D3Q5S4#BKeL9QLuCTG5)
 
 ![img](Github/1.png)
 
