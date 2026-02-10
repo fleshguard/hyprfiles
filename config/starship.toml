@@ -1,4 +1,5 @@
 # version: 1.0.0
+#  󰅂    
 
 add_newline = false
 continuation_prompt = "[▸▹ ](dimmed white)"
@@ -29,60 +30,8 @@ $hg_branch\
 $pijul_channel\
 $docker_context\
 $package\
-$c\
-$cpp\
-$cmake\
-$cobol\
-$daml\
-$dart\
-$deno\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
-$fennel\
-$golang\
 $guix_shell\
-$haskell\
-$haxe\
-$helm\
-$java\
-$julia\
-$kotlin\
-$gradle\
-$lua\
-$nim\
-$nodejs\
-$ocaml\
-$opa\
-$perl\
-$php\
-$pulumi\
-$purescript\
-$python\
-$raku\
-$rlang\
-$red\
-$ruby\
-$rust\
-$scala\
-$solidity\
-$swift\
-$terraform\
-$vlang\
-$vagrant\
-$zig\
-$buf\
-$conda\
-$pixi\
-$meson\
-$spack\
 $memory_usage\
-$aws\
-$gcloud\
-$openstack\
-$azure\
-$crystal\
 $custom\
 $status\
 $battery\
@@ -93,9 +42,9 @@ symbol = ' '
 
 [character]
 format = "$symbol "
-success_symbol = "[󰅂](bold bright-yellow)"
-error_symbol = "[󰅂](bold purple)"
-vimcmd_symbol = "[](bold bright-yellow)"
+success_symbol = "[](bold green)"
+error_symbol = "[ ](bold red)"
+vimcmd_symbol = "[\n](bold dark-green)"
 # not supported in zsh
 vimcmd_replace_one_symbol = " Replace one"
 vimcmd_replace_symbol = " Replace"
@@ -106,8 +55,9 @@ format = "[$env_value]($style)"
 style = 'green italic'
 
 [os]
-format = "on [($type $symbol)]($style)"
-style = "bold blue"
+# $symbol
+format = "on [($type )]($style)"
+style = "bold purple"
 disabled = false
 
 [os.symbols]
@@ -165,7 +115,7 @@ Windows = "🪟 "
 
 [sudo]
 format = "[$symbol]($style)"
-style = "bold italic bright-purple"
+style = "bold green"
 symbol = "⋈ "
 disabled = false
 
@@ -177,43 +127,49 @@ disabled = false
 show_always = false
 
 [directory]
-#home_symbol = " "
-#truncation_length = 2
-#truncation_symbol = "□ "
-read_only = "  "
+home_symbol = " "
+truncation_length = 6
+truncation_symbol = "󰇘 "
+read_only = "  "
+read_only_style = 'bold red'
 use_os_path_sep = true
-style = "italic blue"
-format = '[$path]($style)[$read_only]($read_only_style)'
-repo_root_style = 'bold blue'
-repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [△](bold bright-blue)'
+style = "bold cyan"
+format = '[$path]($style)[$read_only]($read_only_style) '
 
 [directory.substitutions]
 "Desktop" = "  "
 "Documents" = "  "
 "Downloads" = "  "
 "Music" = " 󰎈 "
+"Audio" = " 󰎈 "
 "Pictures" = "  "
 "Videos" = "  "
 
 [cmd_duration]
-format = "[󱎫 $duration ](semibold white)"
+format = "[󱎫 $duration ]($style)"
+style = "bold purple"
+min_time = 0
+show_milliseconds = true
 
 [jobs]
 format = "[$symbol$number]($style) "
 style = "white"
 symbol = "[▶](blue italic)"
+number_threshold = 1
+disabled = true
 
 [localip]
 ssh_only = true
-format = " ◯[$localipv4](bold magenta)"
+format = "󰆍 [$localipv4 ]($style)"
+style = "bold white"
 disabled = false
 
 [time]
 disabled = false
-format = "[ $time]($style)"
+format = "[$time]($style)"
 time_format = "%I:%M:%S %p"
 utc_time_offset = "local"
-style = "semibold dimmed white"
+style = "dimmed bold white"
 
 [battery]
 format = "[ $percentage $symbol]($style)"
@@ -222,6 +178,7 @@ charging_symbol = "[↑](italic bold green)"
 discharging_symbol = "↓"
 unknown_symbol = "░"
 empty_symbol = "▃"
+disabled = true
 
 [[battery.display]]
 threshold = 20
@@ -234,6 +191,11 @@ style = "italic dimmed bright-purple"
 [[battery.display]]
 threshold = 70
 style = "italic dimmed yellow"
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = " "
+disabled = true
 
 [git_branch]
 format = " [$branch(:$remote_branch)]($style)"
@@ -249,7 +211,7 @@ format = '([▴$added]($added_style))([▿$deleted]($deleted_style))'
 added_style = 'italic dimmed green'
 deleted_style = 'italic dimmed red'
 ignore_submodules = true
-disabled = false
+disabled = true
 
 [git_status]
 style = "bold italic bright-blue"
@@ -264,12 +226,14 @@ modified = "[●◦](italic yellow)"
 staged = "[▪┤[$count](bold white)│](italic bright-cyan)"
 renamed = "[◎◦](italic bright-blue)"
 deleted = "[✕](italic red)"
+disabled = true
 
 [package]
 format = " [pkg](italic dimmed) [$symbol$version]($style)"
 version_format = "${raw}"
 symbol = "◨ "
 style = "dimmed yellow italic bold"
+disabled = true
 
 [docker_context]
 symbol = "◧ "
